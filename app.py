@@ -135,3 +135,20 @@ with col_graf4:
 # --- Tabela de Dados Detalhados ---
 st.subheader("Dados Detalhados")
 st.dataframe(df_filtrado)
+
+
+#carregar os dados mais rápido para aparecer no streamlit
+import streamlit as st
+import pandas as pd
+
+@st.cache_data
+def carregar_dados():
+    url = "https://raw.githubusercontent.com/InaraRegina/imersao-de-dados-python/main/dados-imersao-final.csv"
+    return pd.read_csv(url)
+
+df = carregar_dados()
+
+st.subheader("📊 Dados Detalhados")
+st.dataframe(df)
+
+
